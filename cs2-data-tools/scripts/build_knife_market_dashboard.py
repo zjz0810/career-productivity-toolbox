@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -11,7 +12,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 RUN_DATE = sys.argv[1] if len(sys.argv) > 1 else "20260907"
 SOURCE = ROOT / "data" / f"yyyp_knives_under_1000_with_changes_{RUN_DATE}.csv"
-TEMPLATE = Path(r"C:\Users\zongzi\.codex\visualizations\2026\09\05\01a07014-b906-7b33-97e1-1f3ba91e8b0a\knife-market-dashboard.html")
+TEMPLATE = Path(os.environ.get("KNIFE_DASHBOARD_TEMPLATE", ROOT / "knife-market-dashboard.html"))
 
 
 def main() -> None:
