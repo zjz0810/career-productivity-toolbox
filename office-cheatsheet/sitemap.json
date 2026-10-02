@@ -1,0 +1,22 @@
+{
+  "desc": "办公技巧速查页面索引",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "pages/index/index"
+    },
+    {
+      "action": "allow",
+      "page": "pages/category/category"
+    },
+    {
+      "action": "allow",
+      "page": "pages/favorites/favorites"
+    },
+    {
+      "action": "allow",
+      "page": "pages/detail/detail"
+    }
+  ]
+}
+

@@ -1,0 +1,87 @@
+<view wx:if="{{tip}}" class="detail-page">
+  <view class="detail-header">
+    <view class="detail-header__topline">
+      <text class="tag">{{tip.categoryName}} · {{tip.subcategoryName}}</text>
+      <view class="favorite-button {{favorite ? 'favorite-button--active' : ''}}" bindtap="toggleFavorite">
+        <text class="favorite-star">{{favorite ? '★' : '☆'}}</text>
+        <text>{{favorite ? '已收藏' : '收藏'}}</text>
+      </view>
+    </view>
+    <text class="detail-title">{{tip.title}}</text>
+    <text class="detail-summary">{{tip.summary}}</text>
+    <view class="meta-line">
+      <text>适用：{{tip.version}}</text>
+    </view>
+  </view>
+
+  <view class="content-card card">
+    <view class="content-section">
+      <text class="content-title"><text class="content-title__mark">01</text>最快方法</text>
+      <view class="steps-list">
+        <view wx:for="{{tip.steps}}" wx:key="index" class="step-row">
+          <text class="step-number">{{index + 1}}</text>
+          <text class="step-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-section path-section">
+      <text class="content-title"><text class="content-title__mark">02</text>操作路径</text>
+      <view class="path-box">
+        <text wx:for="{{tip.path}}" wx:key="index" class="path-item">{{item}}<text wx:if="{{index < tip.path.length - 1}}" class="path-arrow">›</text></text>
+      </view>
+    </view>
+
+    <view class="content-section image-section">
+      <text class="content-title"><text class="content-title__mark">03</text>演示图</text>
+      <block wx:if="{{tip.images.length}}">
+        <view wx:for="{{tip.images}}" wx:key="index" class="image-item">
+          <image
+            wx:if="{{!item.failed}}"
+            class="demo-image"
+            src="{{item.thumb || item}}"
+            mode="widthFix"
+            lazy-load="true"
+            data-index="{{index}}"
+            bindtap="previewImage"
+            binderror="onImageError"
+          />
+          <text wx:if="{{item.caption && !item.failed}}" class="image-caption">{{item.caption}}</text>
+          <view wx:if="{{item.failed}}" class="image-fallback">演示图暂时无法加载，请按文字步骤操作。</view>
+        </view>
+      </block>
+      <view wx:else class="image-placeholder">
+        <text class="image-placeholder__icon">▧</text>
+        <text>图示位置已预留</text>
+        <text class="image-placeholder__desc">后续在数据中加入 thumb / full 图片路径即可显示</text>
+      </view>
+    </view>
+
+    <view wx:if="{{tip.tips.length}}" class="content-section tips-section">
+      <text class="content-title"><text class="content-title__mark">04</text>容易踩坑</text>
+      <view class="tips-box">
+        <text wx:for="{{tip.tips}}" wx:key="index" class="tip-line">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{relatedTips.length}}" class="related-section">
+    <text class="related-title">相关操作</text>
+    <view class="related-list card">
+      <view wx:for="{{relatedTips}}" wx:key="id" class="related-row hairline" data-id="{{item.id}}" bindtap="openRelated">
+        <view class="related-copy">
+          <text class="related-name">{{item.title}}</text>
+          <text class="related-summary">{{item.summary}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else class="page empty-detail">
+  <view class="empty-state card">
+    <text class="empty-state__title">没有找到这个技巧</text>
+    <text class="empty-state__desc">请返回首页重新搜索。</text>
+  </view>
+</view>
+

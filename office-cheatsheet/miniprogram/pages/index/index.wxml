@@ -1,0 +1,79 @@
+<view class="page home-page">
+  <view class="hero">
+    <text class="eyebrow">{{appName}}</text>
+    <text class="hero-title">今天想解决什么问题？</text>
+    <text class="hero-desc">{{appTagline}}</text>
+  </view>
+
+  <search-bar value="{{query}}" placeholder="{{searchPlaceholder}}" bindchange="onSearchChange" bindclear="onSearchClear" />
+
+  <block wx:if="{{query}}">
+    <view class="result-head">
+      <text class="section-title">搜索结果</text>
+      <text class="result-count">{{searchResults.length}} 条</text>
+    </view>
+    <view wx:if="{{searchResults.length}}" class="tip-list card">
+      <block wx:for="{{searchResults}}" wx:key="id">
+        <view class="tip-row hairline" data-id="{{item.id}}" bindtap="openTip">
+          <view class="tip-row__main">
+            <view class="tip-row__title-line">
+              <text class="tip-row__title">{{item.title}}</text>
+              <text class="tag">{{item.categoryName}}</text>
+            </view>
+            <text class="tip-row__summary">{{item.summary}}</text>
+          </view>
+          <text class="arrow">›</text>
+        </view>
+      </block>
+    </view>
+    <view wx:else class="empty-state card">
+      <text class="empty-state__title">暂时没找到这个操作</text>
+      <text class="empty-state__desc">换个关键词试试，例如：空格、页码、两栏</text>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="section-block">
+      <text class="section-title">快捷分类</text>
+      <view class="category-grid">
+        <view wx:for="{{categories}}" wx:key="id" class="category-card card" data-id="{{item.id}}" bindtap="openCategory">
+          <view class="category-icon" style="background: {{item.color}};">{{item.icon}}</view>
+          <view class="category-copy">
+            <text class="category-name">{{item.name}}</text>
+            <text class="category-desc">{{item.description}}</text>
+          </view>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-block">
+      <view class="section-heading-line">
+        <text class="section-title">常用操作</text>
+        <text class="section-more" data-id="word" bindtap="openCategory">查看分类</text>
+      </view>
+      <view class="quick-list card">
+        <view wx:for="{{commonTips}}" wx:key="id" class="quick-row hairline" data-id="{{item.id}}" bindtap="openTip">
+          <view class="quick-dot {{item.category}}"></view>
+          <text class="quick-title">{{item.title}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{recentTips.length}}" class="section-block recent-block">
+      <view class="section-heading-line">
+        <text class="section-title">最近查看</text>
+        <text class="section-more">本机保存</text>
+      </view>
+      <view class="quick-list card">
+        <view wx:for="{{recentTips}}" wx:key="id" class="quick-row hairline" data-id="{{item.id}}" bindtap="openTip">
+          <view class="quick-dot {{item.category}}"></view>
+          <text class="quick-title">{{item.title}}</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+

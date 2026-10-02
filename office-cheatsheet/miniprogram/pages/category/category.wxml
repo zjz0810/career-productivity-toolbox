@@ -1,0 +1,68 @@
+<view class="page category-page">
+  <view class="page-heading">
+    <text class="eyebrow">快速定位</text>
+    <text class="page-title">按软件找操作</text>
+  </view>
+
+  <search-bar value="{{query}}" placeholder="搜索当前分类，例如：页码、重复项" bindchange="onSearchChange" bindclear="onSearchClear" />
+
+  <view class="category-switcher">
+    <view wx:for="{{categories}}" wx:key="id" class="category-switch {{activeCategory === item.id ? 'category-switch--active' : ''}}" data-id="{{item.id}}" bindtap="chooseCategory">
+      <text class="category-switch__icon {{item.id}}">{{item.icon}}</text>
+      <text>{{item.name}}</text>
+      <text class="category-switch__count">{{item.count}}</text>
+    </view>
+  </view>
+
+  <block wx:if="{{query}}">
+    <view class="result-head">
+      <text class="section-title">{{activeCategoryName}}搜索结果</text>
+      <text class="result-count">{{searchResults.length}} 条</text>
+    </view>
+    <view wx:if="{{searchResults.length}}" class="tip-list card">
+      <view wx:for="{{searchResults}}" wx:key="id" class="tip-row hairline" data-id="{{item.id}}" bindtap="openTip">
+        <view class="tip-row__main">
+          <view class="tip-row__title-line">
+            <text class="tip-row__title">{{item.title}}</text>
+            <text class="tag">{{item.subcategoryName}}</text>
+          </view>
+          <text class="tip-row__summary">{{item.summary}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+    <view wx:else class="empty-state card">
+      <text class="empty-state__title">暂时没找到这个操作</text>
+      <text class="empty-state__desc">换个关键词试试，例如：空格、页码、两栏</text>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="subsection-block">
+      <view class="section-heading-line">
+        <text class="section-title">{{activeCategoryName}}技巧分类</text>
+        <text class="section-more">{{categoryTips.length}} 个操作</text>
+      </view>
+      <scroll-view class="subcategory-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
+        <view class="subcategory-list">
+          <view class="subcategory-pill {{activeSubcategory === '' ? 'subcategory-pill--active' : ''}}" bindtap="showAll">全部</view>
+          <view wx:for="{{activeSubcategories}}" wx:key="id" class="subcategory-pill {{activeSubcategory === item.id ? 'subcategory-pill--active' : ''}}" data-id="{{item.id}}" bindtap="chooseSubcategory">{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="tip-list card">
+      <view wx:for="{{visibleTips}}" wx:key="id" class="tip-row hairline" data-id="{{item.id}}" bindtap="openTip">
+        <view class="tip-row__main">
+          <view class="tip-row__title-line">
+            <text class="tip-row__title">{{item.title}}</text>
+            <text class="tag">{{item.subcategoryName}}</text>
+          </view>
+          <text class="tip-row__summary">{{item.summary}}</text>
+        </view>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </block>
+</view>
+

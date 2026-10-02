@@ -1,0 +1,27 @@
+<view class="page favorites-page">
+  <view class="page-heading">
+    <text class="eyebrow">随手保存</text>
+    <text class="page-title">我的收藏</text>
+    <text class="page-desc">把经常用到的操作放在这里，离线也能查看。</text>
+  </view>
+
+  <view wx:if="{{favoriteTips.length}}" class="favorite-list card">
+    <view wx:for="{{favoriteTips}}" wx:key="id" class="favorite-row hairline" data-id="{{item.id}}" bindtap="openTip">
+      <view class="favorite-row__main">
+        <view class="favorite-title-line">
+          <text class="favorite-title">{{item.title}}</text>
+          <text class="tag">{{item.categoryName}}</text>
+        </view>
+        <text class="favorite-summary">{{item.summary}}</text>
+      </view>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+  <view wx:else class="empty-state card">
+    <text class="empty-state__icon">☆</text>
+    <text class="empty-state__title">还没有收藏操作</text>
+    <text class="empty-state__desc">打开一个技巧，点击右上角的收藏按钮，之后可以在这里快速找到。</text>
+    <button class="empty-button" bindtap="goHome">去首页搜索</button>
+  </view>
+</view>
+

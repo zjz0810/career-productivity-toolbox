@@ -1,0 +1,176 @@
+.home-page {
+  padding-top: 44rpx;
+}
+
+.hero {
+  padding: 8rpx 8rpx 30rpx;
+}
+
+.eyebrow {
+  color: #2c6bed;
+  display: block;
+  font-size: 25rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  margin-bottom: 26rpx;
+}
+
+.hero-title {
+  color: #152033;
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  line-height: 1.3;
+}
+
+.hero-desc {
+  color: #87909f;
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.6;
+  margin-top: 14rpx;
+}
+
+.section-block {
+  margin-top: 28rpx;
+}
+
+.category-grid {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 22rpx;
+}
+
+.category-card {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  min-height: 154rpx;
+  padding: 24rpx 18rpx;
+}
+
+.category-icon {
+  align-items: center;
+  border-radius: 18rpx;
+  color: #fff;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 38rpx;
+  font-weight: 700;
+  height: 76rpx;
+  justify-content: center;
+  width: 76rpx;
+}
+
+.category-copy {
+  flex: 1;
+  margin-left: 16rpx;
+  min-width: 0;
+}
+
+.category-name {
+  color: #1e293b;
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.category-desc {
+  color: #8b94a2;
+  display: block;
+  font-size: 22rpx;
+  line-height: 1.4;
+}
+
+.arrow {
+  color: #aab2bd;
+  font-size: 44rpx;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: 8rpx;
+}
+
+.section-heading-line,
+.result-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-more,
+.result-count {
+  color: #87909f;
+  font-size: 24rpx;
+}
+
+.quick-list,
+.tip-list {
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+
+.quick-row,
+.tip-row {
+  align-items: center;
+  display: flex;
+  min-height: 94rpx;
+  padding: 20rpx 26rpx;
+}
+
+.quick-dot {
+  border-radius: 50%;
+  height: 14rpx;
+  margin-right: 18rpx;
+  width: 14rpx;
+}
+
+.quick-dot.word { background: #2c6bed; }
+.quick-dot.excel { background: #19a974; }
+
+.quick-title {
+  color: #313b4d;
+  flex: 1;
+  font-size: 27rpx;
+}
+
+.recent-block {
+  margin-bottom: 20rpx;
+}
+
+.tip-row {
+  align-items: flex-start;
+}
+
+.tip-row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.tip-row__title-line {
+  align-items: center;
+  display: flex;
+  gap: 12rpx;
+}
+
+.tip-row__title {
+  color: #263247;
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.tip-row__summary {
+  color: #8b94a2;
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.5;
+  margin-top: 8rpx;
+}
+
+.empty-state {
+  margin-top: 20rpx;
+}
+

@@ -1,0 +1,100 @@
+.favorites-page {
+  padding-top: 38rpx;
+}
+
+.page-heading {
+  padding: 8rpx 8rpx 30rpx;
+}
+
+.eyebrow {
+  color: #2c6bed;
+  display: block;
+  font-size: 24rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  margin-bottom: 16rpx;
+}
+
+.page-title {
+  color: #172033;
+  display: block;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.page-desc {
+  color: #8b94a2;
+  display: block;
+  font-size: 25rpx;
+  line-height: 1.6;
+  margin-top: 12rpx;
+}
+
+.favorite-list {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.favorite-row {
+  align-items: flex-start;
+  display: flex;
+  min-height: 124rpx;
+  padding: 24rpx 26rpx;
+}
+
+.favorite-row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.favorite-title-line {
+  align-items: center;
+  display: flex;
+  gap: 12rpx;
+}
+
+.favorite-title {
+  color: #263247;
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.favorite-summary {
+  color: #8b94a2;
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.55;
+  margin-top: 8rpx;
+}
+
+.arrow {
+  color: #aab2bd;
+  font-size: 44rpx;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: 12rpx;
+}
+
+.empty-state {
+  margin-top: 6rpx;
+}
+
+.empty-state__icon {
+  color: #b8c5df;
+  display: block;
+  font-size: 80rpx;
+  line-height: 1;
+  margin-bottom: 22rpx;
+}
+
+.empty-button {
+  background: #2c6bed;
+  border-radius: 12rpx;
+  color: #fff;
+  font-size: 26rpx;
+  margin: 32rpx auto 0;
+  width: 300rpx;
+}
+

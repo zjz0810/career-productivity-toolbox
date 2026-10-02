@@ -1,0 +1,276 @@
+.detail-page {
+  min-height: 100vh;
+  padding: 36rpx 32rpx 64rpx;
+}
+
+.detail-header {
+  padding: 4rpx 8rpx 30rpx;
+}
+
+.detail-header__topline {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-button {
+  align-items: center;
+  color: #7c8796;
+  display: flex;
+  font-size: 24rpx;
+  padding: 8rpx 0 8rpx 16rpx;
+}
+
+.favorite-button--active {
+  color: #e6a31a;
+}
+
+.favorite-star {
+  font-size: 42rpx;
+  line-height: 1;
+  margin-right: 7rpx;
+}
+
+.detail-title {
+  color: #172033;
+  display: block;
+  font-size: 46rpx;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 24rpx;
+}
+
+.detail-summary {
+  color: #697586;
+  display: block;
+  font-size: 27rpx;
+  line-height: 1.65;
+  margin-top: 14rpx;
+}
+
+.meta-line {
+  color: #99a2af;
+  font-size: 22rpx;
+  line-height: 1.5;
+  margin-top: 18rpx;
+}
+
+.content-card {
+  border-radius: 24rpx;
+  padding: 34rpx 28rpx 12rpx;
+}
+
+.content-section {
+  padding-bottom: 38rpx;
+}
+
+.path-section,
+.image-section,
+.tips-section {
+  border-top: 1rpx solid #edf0f4;
+  padding-top: 32rpx;
+}
+
+.content-title {
+  color: #253147;
+  display: block;
+  font-size: 31rpx;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.content-title__mark {
+  color: #2c6bed;
+  font-size: 22rpx;
+  letter-spacing: 1rpx;
+  margin-right: 14rpx;
+  vertical-align: 3rpx;
+}
+
+.steps-list {
+  margin-top: 22rpx;
+}
+
+.step-row {
+  align-items: flex-start;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.step-number {
+  align-items: center;
+  background: #eef4ff;
+  border-radius: 50%;
+  color: #2c6bed;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 22rpx;
+  font-weight: 600;
+  height: 38rpx;
+  justify-content: center;
+  margin-right: 16rpx;
+  width: 38rpx;
+}
+
+.step-text {
+  color: #404b5e;
+  flex: 1;
+  font-size: 27rpx;
+  line-height: 1.65;
+}
+
+.path-box {
+  background: #f5f7fb;
+  border-radius: 14rpx;
+  margin-top: 20rpx;
+  padding: 22rpx 20rpx;
+}
+
+.path-item {
+  color: #405067;
+  font-size: 25rpx;
+  line-height: 1.6;
+}
+
+.path-arrow {
+  color: #9ba6b5;
+  font-size: 32rpx;
+  margin: 0 10rpx;
+  vertical-align: -2rpx;
+}
+
+.image-item {
+  margin-top: 20rpx;
+}
+
+.demo-image {
+  border-radius: 14rpx;
+  display: block;
+  max-height: 620rpx;
+  width: 100%;
+}
+
+.image-caption {
+  color: #8993a1;
+  display: block;
+  font-size: 23rpx;
+  line-height: 1.5;
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+.image-placeholder,
+.image-fallback {
+  align-items: center;
+  background: #f7f8fa;
+  border: 1rpx dashed #dce2eb;
+  border-radius: 14rpx;
+  color: #8993a1;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  justify-content: center;
+  margin-top: 20rpx;
+  min-height: 210rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+
+.image-placeholder__icon {
+  color: #b8c5d9;
+  font-size: 60rpx;
+  line-height: 1;
+  margin-bottom: 12rpx;
+}
+
+.image-placeholder__desc {
+  color: #a6aebb;
+  font-size: 22rpx;
+  margin-top: 8rpx;
+}
+
+.tips-box {
+  background: #fffaf0;
+  border-radius: 14rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 22rpx;
+}
+
+.tip-line {
+  color: #846a3e;
+  display: block;
+  font-size: 25rpx;
+  line-height: 1.65;
+  padding-left: 24rpx;
+  position: relative;
+}
+
+.tip-line + .tip-line {
+  margin-top: 10rpx;
+}
+
+.tip-line::before {
+  color: #e7ad48;
+  content: '·';
+  font-size: 30rpx;
+  left: 0;
+  position: absolute;
+  top: -2rpx;
+}
+
+.related-section {
+  margin-top: 40rpx;
+}
+
+.related-title {
+  color: #253147;
+  display: block;
+  font-size: 31rpx;
+  font-weight: 700;
+  margin: 0 8rpx 18rpx;
+}
+
+.related-list {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.related-row {
+  align-items: center;
+  display: flex;
+  padding: 22rpx 24rpx;
+}
+
+.related-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.related-name {
+  color: #344056;
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.related-summary {
+  color: #929aa8;
+  display: block;
+  font-size: 22rpx;
+  line-height: 1.45;
+  margin-top: 5rpx;
+}
+
+.arrow {
+  color: #aab2bd;
+  font-size: 44rpx;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: 12rpx;
+}
+
+.empty-detail {
+  padding-top: 80rpx;
+}
+

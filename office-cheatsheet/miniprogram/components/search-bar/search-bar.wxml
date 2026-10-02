@@ -1,0 +1,18 @@
+<view class="search-wrap">
+  <view class="search-box {{focused ? 'search-box--focused' : ''}}">
+    <text class="search-icon">⌕</text>
+    <input
+      class="search-input"
+      value="{{value}}"
+      placeholder="{{placeholder}}"
+      placeholder-class="search-placeholder"
+      confirm-type="search"
+      bindinput="onInput"
+      bindconfirm="onConfirm"
+      bindfocus="onFocus"
+      bindblur="onBlur"
+    />
+    <text wx:if="{{value}}" class="clear-icon" catchtap="onClear">×</text>
+  </view>
+</view>
+

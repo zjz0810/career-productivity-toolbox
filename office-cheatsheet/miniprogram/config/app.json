@@ -1,0 +1,8 @@
+{
+  "appName": "办公技巧速查",
+  "appTagline": "遇到具体问题，快速找到点哪里。",
+  "searchPlaceholder": "搜索操作，例如：删除空格、两栏、冻结首行",
+  "recentLimit": 8,
+  "favoriteLimit": 100
+}
+
