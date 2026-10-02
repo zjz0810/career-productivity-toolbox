@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>校招岗位整理器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>校招岗位整理器</h1>
+      <span>把群聊信息整理好，专心逐个投递</span>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="top-actions">
+      <button id="exportBtn" class="button light">导出 JSON</button>
+      <button id="exportCsvBtn" class="button light">导出 CSV</button>
+      <button id="importBtn" class="button light">导入 JSON</button>
+      <button id="clearExamplesBtn" class="button light">清空示例</button>
+      <button id="clearBtn" class="button danger-outline">清空数据</button>
+      <input id="importFile" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel paste-panel">
+      <div class="panel-title">
+        <div>
+          <h2>批量粘贴招聘信息</h2>
+          <p>支持一次粘贴多条消息；建议用空行分隔不同岗位。微信文章/图片卡片请粘贴可复制的文字和 URL，识别结果可在加入前修改。</p>
+        </div>
+        <button id="smartSplitBtn" class="button primary">智能拆分</button>
+      </div>
+      <textarea id="pasteInput" placeholder="例如：
+字节跳动 2027 校招
+岗位：算法工程师（AI方向）
+地点：北京 / 上海
+薪资：面议
+网申：https://example.com
+截止日期：2026-10-31"></textarea>
+      <div id="splitPreview" class="split-preview hidden"></div>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="list-heading">
+        <div>
+          <h2>岗位列表 <span id="resultCount" class="muted-count"></span></h2>
+          <p>点击行末“编辑”补充匹配信息。状态为“准备投”的岗位会进入投递队列。</p>
+        </div>
+        <button id="startQueueBtn" class="button primary large">开始投递</button>
+      </div>
+      <div class="filters">
+        <input id="companyFilter" placeholder="搜索公司">
+        <input id="cityFilter" placeholder="搜索城市">
+        <input id="keywordFilter" placeholder="岗位关键词">
+        <select id="statusFilter"><option value="">全部状态</option></select>
+        <select id="tagFilter">
+          <option value="">全部方向</option>
+          <option value="AI/Agent">AI/Agent</option>
+          <option value="电机/控制">电机/控制</option>
+        </select>
+        <button id="resetFiltersBtn" class="button light">重置筛选</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>公司</th><th>岗位</th><th>地点</th><th>薪资</th><th>原始 URL</th><th>链接解析状态</th><th>来源 / 类型</th><th>状态</th><th></th></tr></thead>
+          <tbody id="jobTableBody"></tbody>
+        </table>
+        <div id="emptyState" class="empty hidden">暂无符合条件的岗位</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="editorModal" class="modal-backdrop hidden" aria-hidden="true">
+    <section class="modal editor-modal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <div class="modal-header"><h2 id="editorTitle">编辑岗位</h2><button class="icon-button" data-close-editor aria-label="关闭">×</button></div>
+      <form id="jobForm">
+        <input id="jobId" type="hidden">
+        <div class="form-grid">
+          <label>公司名称<input id="company" required></label>
+          <label>岗位名称<input id="title" required></label>
+          <label>城市 / 地点<input id="city"></label>
+          <label>薪资<input id="salary"></label>
+          <label>招聘类型<select id="type"><option>校招</option><option>实习</option><option>社招</option><option>其他</option></select></label>
+          <label>截止日期<input id="deadline" placeholder="如 2026-10-31"></label>
+          <label class="wide">原始 URL（每行一个）<textarea id="url" placeholder="保留消息中的全部 URL，不会自动打开"></textarea></label>
+          <label>链接解析状态<select id="linkParseStatus"><option>待解析</option><option>已解析</option><option>需人工打开</option></select></label>
+          <label>状态<select id="status"></select></label>
+          <label>匹配度（0-100）<input id="match" type="number" min="0" max="100"></label>
+          <label>使用简历<select id="resume"><option>AI版</option><option>控制算法版</option><option>都可以</option></select></label>
+          <label>优先级<select id="priority"><option>S</option><option>A</option><option>B</option><option>C</option></select></label>
+          <label class="wide">方向标签<div class="tag-checks"><label><input id="tagAI" type="checkbox"> AI/Agent</label><label><input id="tagControl" type="checkbox"> 电机/控制</label></div></label>
+          <label class="wide">原始招聘文本<textarea id="raw"></textarea></label>
+          <label class="wide">GPT建议<textarea id="gptSuggestion" placeholder="暂时手工填写，后续可接入 LLM"></textarea></label>
+          <label class="wide">我的备注<textarea id="notes"></textarea></label>
+        </div>
+        <div class="modal-actions"><button type="button" class="button light" data-close-editor>取消</button><button type="submit" class="button primary">保存</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div id="queueModal" class="modal-backdrop hidden" aria-hidden="true">
+    <section class="modal queue-modal" role="dialog" aria-modal="true" aria-labelledby="queueTitle">
+      <div class="modal-header"><div><h2 id="queueTitle">投递队列</h2><p id="queueProgress" class="modal-subtitle"></p></div><button class="icon-button" id="queueCloseBtn" aria-label="返回列表">×</button></div>
+      <div id="queueContent"></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+<script src="app.js?v=265"></script>
+</body>
+</html>
