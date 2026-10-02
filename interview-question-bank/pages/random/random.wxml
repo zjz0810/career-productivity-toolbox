@@ -1,0 +1,7 @@
+<view class="page random-page">
+  <view class="round-head"><view><view class="round-title">随机刷题</view><view class="round-subtitle">凭记忆回答，再对照答案</view></view><view class="round-progress">{{index + 1}} / {{total}}</view></view>
+  <view class="progress card"><view class="progress-fill" style="width: {{(index + 1) / total * 100}}%;"></view></view>
+  <view wx:if="{{current}}" class="practice-card card"><view class="practice-category">{{current.category}}</view><view class="practice-question">{{current.question}}</view><view class="tag-line"><text class="tag" wx:for="{{current.tags}}" wx:key="*this">{{item}}</text></view><button wx:if="{{!answerVisible}}" class="answer-toggle" bindtap="revealAnswer">显示答案</button><view wx:if="{{answerVisible}}" class="practice-answer"><view class="block-title">容易理解</view><view class="easy-answer">{{current.easyAnswer}}</view><view class="block-title simple-answer-title">一句话回答</view><view class="short-answer">{{current.shortAnswer}}</view><view class="detail-link" bindtap="openDetail">查看详细解释 ›</view></view></view>
+  <view wx:if="{{current}}" class="result-panel"><view class="result-title">这道题掌握得怎么样？</view><view class="result-buttons"><button class="result-button mastered" data-result="mastered" bindtap="markResult">会了</button><button class="result-button fuzzy" data-result="review" bindtap="markResult">模糊</button><button class="result-button unknown" data-result="review" bindtap="markResult">不会</button></view></view>
+  <button class="restart-button plain-button" bindtap="startRound">重新生成10题</button>
+</view>

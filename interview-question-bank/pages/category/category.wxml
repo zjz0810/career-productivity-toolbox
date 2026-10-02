@@ -1,0 +1,21 @@
+<view class="page category-page">
+  <view class="list-head"><view class="list-title">{{title}}</view><view class="list-subtitle">{{subtitle}}</view></view>
+  <view wx:if="{{subcategories.length}}" class="subcategory-list">
+    <view class="subcategory-item card" wx:for="{{subcategories}}" wx:key="name" data-category="{{item.name}}" bindtap="openSubcategory"><view class="subcategory-copy"><view class="subcategory-name">{{item.name}}</view><view class="subcategory-desc">{{item.description}}</view></view><view class="subcategory-count">{{item.count}}题 <text>›</text></view></view>
+  </view>
+  <view wx:if="{{subcategories.length}}" class="section-label">本大类全部题目</view>
+  <view wx:if="{{showMasteredButton}}" class="result-count">总题数：{{totalCount}}　未掌握：{{unmasteredQuestions.length}}　已掌握：{{masteredCount}}</view>
+  <view wx:else class="result-count">共 {{totalCount}} 道题</view>
+  <view wx:if="{{totalCount}}">
+    <view wx:if="{{showMasteredButton}}" class="study-section-title">未掌握（{{unmasteredQuestions.length}}）</view>
+    <view wx:if="{{visibleQuestions.length}}">
+      <view class="question-card card" wx:for="{{visibleQuestions}}" wx:key="id" data-id="{{item.id}}" bindtap="openQuestion">
+        <view class="question-card-top"><view class="question-index">Q{{item.displayIndex}}</view><view class="question-card-body"><view class="question-text">{{item.question}}</view><view class="tag-line"><text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text></view></view><view class="chevron">›</view></view>
+        <view class="state-line"><text wx:if="{{item.state.favorite}}" class="state favorite-state">已收藏</text><text wx:if="{{item.state.mastered}}" class="state mastered-state">已掌握</text><text wx:if="{{item.state.review}}" class="state review-state">待复习</text><text class="difficulty">难度 {{item.difficulty}}</text></view>
+      </view>
+    </view>
+    <view wx:if="{{showMasteredButton && !visibleQuestions.length}}" class="card empty section-empty">暂无未掌握题目</view>
+  </view>
+  <view wx:else class="card empty">{{emptyText}}<view class="empty-tip">在题目详情中可以收藏或标记待复习。</view></view>
+  <button wx:if="{{showMasteredButton}}" class="mastered-entry card" bindtap="openMastered">已掌握 {{masteredCount}}题 <text>›</text></button>
+</view>

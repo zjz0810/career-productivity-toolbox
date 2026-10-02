@@ -1,0 +1,8 @@
+<view class="page search-page">
+  <view class="search-box card"><text class="search-icon">⌕</text><input focus value="{{keyword}}" placeholder="搜索 question / answer / tags / 分类" confirm-type="search" bindinput="onInput" /><text wx:if="{{keyword}}" class="clear-button" bindtap="clearSearch">×</text></view>
+  <view class="search-tip">支持搜索题目、详细答案、一句话答案、标签和分类</view>
+  <view wx:if="{{hasSearched}}" class="result-summary">找到 {{results.length}} 道相关题目</view>
+  <view wx:if="{{hasSearched && results.length}}" class="results"><view class="result-item card" wx:for="{{results}}" wx:key="id" data-id="{{item.id}}" bindtap="openQuestion"><view class="result-category">{{item.category}}</view><view class="result-question">{{item.question}}</view><view class="result-bottom"><text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text><text wx:if="{{item.state.favorite}}" class="saved-mark">★</text></view></view></view>
+  <view wx:if="{{hasSearched && !results.length}}" class="card empty">没有找到相关题目<view class="empty-tip">试试更短的关键词，例如 “Park” 或 “PI”。</view></view>
+  <view wx:if="{{!hasSearched}}" class="search-guide card"><view class="guide-title">试试这些关键词</view><view class="guide-tags"><text class="tag">FOC</text><text class="tag">Park</text><text class="tag">SVPWM</text><text class="tag">LADRC</text><text class="tag">Simulink</text></view></view>
+</view>

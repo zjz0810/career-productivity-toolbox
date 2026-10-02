@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f6f8">
+  <title>FOC学习题库</title>
+  <link rel="stylesheet" href="./styles.css?v=5">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.addEventListener('error', function (event) {
+      var root = document.getElementById('app')
+      if (root && !root.children.length) {
+        root.innerHTML = '<div style="max-width:680px;margin:80px auto;padding:24px;font-family:sans-serif;background:#fff;border:1px solid #e6e9ed;border-radius:12px;color:#30353c"><h2>题库加载失败</h2><p>请刷新页面；如果仍然失败，请把本页显示的错误发给我。</p><p style="color:#8a919d;font-size:13px">' + String(event.message || '浏览器脚本没有正常启动') + '</p></div>'
+      }
+    })
+  </script>
+  <script src="../data/categories.js"></script>
+  <script src="../data/questions.js"></script>
+  <script src="./app.js?v=5"></script>
+</body>
+</html>

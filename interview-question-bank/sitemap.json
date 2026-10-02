@@ -1,0 +1,10 @@
+{
+  "desc": "FOC学习题库本地小程序页面索引",
+  "rules": [
+    { "action": "allow", "page": "pages/index/index" },
+    { "action": "allow", "page": "pages/category/category" },
+    { "action": "allow", "page": "pages/detail/detail" },
+    { "action": "allow", "page": "pages/search/search" },
+    { "action": "allow", "page": "pages/random/random" }
+  ]
+}

@@ -1,0 +1,40 @@
+<view class="page home-page">
+  <view class="home-head">
+    <view>
+      <view class="eyebrow">PERSONAL STUDY NOTES</view>
+      <view class="title">FOC学习题库</view>
+      <view class="subtitle">PMSM · BLDC · 电机控制 · 面试复习</view>
+    </view>
+    <view class="total-count"><text>{{total}}</text><label>道题</label></view>
+  </view>
+
+  <view class="search-entry card" bindtap="goSearch">
+    <text class="search-icon">⌕</text><text class="muted">搜索题目、答案、标签或分类</text><text class="search-arrow">›</text>
+  </view>
+
+  <view class="section-title-row category-heading"><view class="section-title">知识大类</view><view class="muted">{{categories.length}} 个大类</view></view>
+  <view class="category-list">
+    <view class="category-item card" wx:for="{{categories}}" wx:key="name" data-group="{{item.name}}" bindtap="openCategory">
+      <view class="category-number">{{index < 9 ? '0' + (index + 1) : index + 1}}</view>
+      <view class="category-content"><view class="category-name">{{item.name}}</view><view class="category-desc">{{item.description}}</view><view class="subcategory-hint">{{item.children.length}} 个专题</view></view>
+      <view class="category-count">{{item.count}}<text>题</text></view><view class="chevron">›</view>
+    </view>
+  </view>
+
+  <view class="quick-grid">
+    <view class="quick-card card" bindtap="goRandom"><view class="quick-symbol blue">↻</view><view class="quick-title">随机10题</view><view class="quick-desc">开始一轮练习</view></view>
+    <view class="quick-card card" data-mode="favorite" bindtap="openCollection"><view class="quick-symbol yellow">☆</view><view class="quick-title">收藏</view><view class="quick-desc">{{favoriteCount}} 道已收藏</view></view>
+    <view class="quick-card card" data-mode="review" bindtap="openCollection"><view class="quick-symbol orange">◷</view><view class="quick-title">待复习</view><view class="quick-desc">{{reviewCount}} 道待巩固</view></view>
+    <view class="quick-card card" data-mode="mistake" bindtap="openCollection"><view class="quick-symbol red">!</view><view class="quick-title">易错题</view><view class="quick-desc">{{mistakeCount}} 道未掌握</view></view>
+  </view>
+
+  <view class="section-title-row"><view class="section-title">学习进度</view><view class="progress-text">已掌握 {{masteredCount}} / {{total}}</view></view>
+  <view class="progress card"><view class="progress-fill" style="width: {{total ? masteredCount / total * 100 : 0}}%;"></view></view>
+
+  <view class="section-title-row recent-heading"><view class="section-title">题库预览</view><view class="muted">点击进入详情</view></view>
+  <view class="recent-list">
+    <view class="recent-item card" wx:for="{{recentQuestions}}" wx:key="id" data-id="{{item.id}}" bindtap="openQuestion">
+      <view class="recent-main"><view class="recent-question">{{item.question}}</view><view class="tag-line"><text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text></view></view><text class="chevron">›</text>
+    </view>
+  </view>
+</view>

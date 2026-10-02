@@ -1,0 +1,12 @@
+<view class="page detail-page">
+  <view wx:if="{{question}}">
+    <view class="detail-meta"><text class="meta-category">{{question.category}}</text><text class="meta-position">Q{{question.displayIndex}} · {{positionText}}</text></view>
+    <view class="detail-question card"><view class="detail-label">QUESTION</view><view class="detail-question-text">{{question.question}}</view><view class="tag-line"><text class="tag" wx:for="{{question.tags}}" wx:key="*this">{{item}}</text></view></view>
+    <button class="answer-toggle" bindtap="toggleAnswer">{{answerVisible ? '收起答案' : '显示答案'}}</button>
+    <view wx:if="{{answerVisible}}" class="answer-area"><view class="answer-block card"><view class="block-title">容易理解</view><view class="easy-answer">{{question.easyAnswer}}</view></view><view class="answer-block card"><view class="block-title">一句话回答</view><view class="short-answer">{{question.shortAnswer}}</view></view><view class="answer-block card"><view class="block-title">详细解释</view><view class="long-answer">{{question.answer}}</view></view></view>
+    <view class="action-card card"><view class="action-row"><view class="action-item" data-type="favorite" bindtap="updateQuestionState"><view class="action-icon {{state.favorite ? 'active-yellow' : ''}}">{{state.favorite ? '★' : '☆'}}</view><view>{{state.favorite ? '已收藏' : '收藏'}}</view></view><view class="action-item" data-type="mastered" bindtap="updateQuestionState"><view class="action-icon {{state.mastered ? 'active-green' : ''}}">✓</view><view>已掌握</view></view><view class="action-item" data-type="review" bindtap="updateQuestionState"><view class="action-icon {{state.review ? 'active-orange' : ''}}">◷</view><view>{{state.review ? '待复习中' : '待复习'}}</view></view></view></view>
+    <view class="note-card card"><view class="block-title">个人备注</view><textarea class="note-input" maxlength="500" placeholder="写下自己的理解、疑问或面试表达……" value="{{state.note}}" bindinput="noteInput"></textarea><button class="save-note" bindtap="saveNote">保存备注</button></view>
+    <view class="nav-row"><button class="nav-button plain-button" disabled="{{!hasPrevious}}" bindtap="previousQuestion">‹ 上一题</button><button class="nav-button plain-button" bindtap="randomQuestion">随机一题</button><button class="nav-button plain-button" disabled="{{!hasNext}}" bindtap="nextQuestion">下一题 ›</button></view>
+  </view>
+  <view wx:else class="card empty">暂无可显示题目</view>
+</view>

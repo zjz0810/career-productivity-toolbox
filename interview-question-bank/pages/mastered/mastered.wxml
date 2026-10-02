@@ -1,0 +1,11 @@
+<view class="page mastered-page">
+  <view class="list-head"><view class="list-title">{{title}}</view><view class="list-subtitle">{{subtitle}}</view></view>
+  <view class="result-count">已掌握 {{count}} 道题</view>
+  <view wx:if="{{list.length}}">
+    <view class="question-card card" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="openQuestion">
+      <view class="question-card-top"><view class="question-index">Q{{item.displayIndex}}</view><view class="question-card-body"><view class="question-text">{{item.question}}</view><view class="tag-line"><text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text></view></view><view class="chevron">›</view></view>
+      <view class="state-line"><text class="state mastered-state">已掌握</text><text class="difficulty">难度 {{item.difficulty}}</text></view>
+    </view>
+  </view>
+  <view wx:else class="card empty">暂无已掌握题目<view class="empty-tip">在题目详情中标记“已掌握”后，这里会自动更新。</view></view>
+</view>

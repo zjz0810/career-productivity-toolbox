@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/mastered/mastered",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/random/random"
+  ],
+  "window": {
+    "navigationBarTitleText": "FOC学习题库",
+    "navigationBarBackgroundColor": "#f7f8fa",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8fa",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#8a919d",
+    "selectedColor": "#1f6feb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "题库" },
+      { "pagePath": "pages/search/search", "text": "搜索" },
+      { "pagePath": "pages/random/random", "text": "随机刷题" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
